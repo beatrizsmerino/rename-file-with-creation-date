@@ -1,0 +1,27 @@
+{
+  "name": "rename-file-with-creation-date",
+  "version": "1.0.0",
+  "description": "Application created to rename multiple images and videos using their creation date metadata by NPM commands on Mac.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beatrizsmerino/rename-file-with-creation-date.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beatrizsmerino/rename-file-with-creation-date/issues"
+  },
+  "homepage": "https://github.com/beatrizsmerino/rename-file-with-creation-date#readme",
+  "keywords": [
+	"nameExif tool",
+	"exifRenamer tool",
+	"get all metadata info of your files",
+	"rename images and videos using their creation date",
+	"rename photos using exif metadata on Mac",
+	"rename multiple files and folders using NPM commands"
+  ],
+  "author": "Beatriz Sopeña Merino <beatrizsmerino@gmail.com>",
+  "license": "ISC"
+}
