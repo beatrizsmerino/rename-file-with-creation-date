@@ -6,6 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beatrizsmerino/rename-file-with-creation-date.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beatrizsmerino/rename-file-with-creation-date/issues"
+  },
+  "homepage": "https://github.com/beatrizsmerino/rename-file-with-creation-date#readme",
   "author": "Beatriz Sopeña Merino <beatrizsmerino@gmail.com>",
   "license": "ISC"
 }
