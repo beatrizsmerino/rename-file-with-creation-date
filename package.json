@@ -1,11 +1,11 @@
 {
   "name": "rename-file-with-creation-date",
   "version": "1.0.0",
-  "description": "",
+  "description": "Application to rename files (images and videos) with their 'Date of creation' metadata.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Beatriz Sopeña Merino <beatrizsmerino@gmail.com>",
   "license": "ISC"
 }
