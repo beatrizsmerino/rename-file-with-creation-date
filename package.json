@@ -28,6 +28,10 @@
 	"author": "Beatriz Sopeña Merino <beatrizsmerino@gmail.com>",
 	"license": "ISC",
 	"devDependencies": {
+		"eslint": "^8.28.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-json": "^3.1.0",
+		"eslint-plugin-prettier": "^4.2.1",
 		"prettier": "^2.8.0"
 	}
 }
