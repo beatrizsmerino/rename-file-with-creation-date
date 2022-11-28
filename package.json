@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"main:js": "node index.js"
+		"main:js": "node index.js",
+		"prettier:fix": "prettier --write \"./**/*.{js,json}\"",
+		"lint": "npm run prettier:fix"
 	},
 	"repository": {
 		"type": "git",
