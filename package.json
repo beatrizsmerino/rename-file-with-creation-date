@@ -29,7 +29,7 @@
 	"author": "Beatriz Sopeña Merino <beatrizsmerino@gmail.com>",
 	"license": "ISC",
 	"devDependencies": {
-		"@babel/core": "^7.20.2",
+		"@babel/core": "^7.20.5",
 		"@babel/eslint-parser": "^7.19.1",
 		"@babel/preset-env": "^7.20.2",
 		"eslint": "^8.28.0",
