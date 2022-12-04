@@ -1,7 +1,5 @@
-"use strict";
+import chalk from "chalk";
 
-import chalk from 'chalk';
-
-const warning = chalk.hex('#FFA500');
+const warning = chalk.hex("#FFA500");
 
 console.log(warning("Hello world!"));
