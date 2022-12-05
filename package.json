@@ -2,8 +2,8 @@
 	"name": "rename-file-with-creation-date",
 	"version": "1.0.0",
 	"description": "Application created to rename multiple images and videos using their creation date metadata by NPM commands on Mac.",
-	"type": "commonjs",
-	"main": "index.js",
+	"type": "module",
+	"exports": "./index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"main:js": "node js/index.js",
@@ -40,6 +40,9 @@
 		"prettier": "^2.8.0"
 	},
 	"dependencies": {
-		"chalk": "^4.1.2"
+		"chalk": "^5.1.2"
+	},
+	"engines": {
+		"node": ">=14.16"
 	}
 }

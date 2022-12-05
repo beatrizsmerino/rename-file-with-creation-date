@@ -1,6 +1,4 @@
-"use strict";
-
-const chalk = require("chalk");
+import chalk from "chalk";
 
 const warning = chalk.hex("#FFA500");
 

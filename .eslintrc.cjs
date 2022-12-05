@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = {
 	root: true,
 	env: {
@@ -11,7 +9,7 @@ module.exports = {
 			jsx: true
 		},
 		ecmaVersion: "latest",
-		sourceType: "script"
+		sourceType: "module"
 	},
 	extends: [
 		"prettier",
