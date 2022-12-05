@@ -7,8 +7,8 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"main:js": "node js/index.js",
-		"prettier:fix": "prettier --write \"./**/*.{js,json}\"",
-		"eslint:fix": "eslint \"**/*.{js,json}\" --fix --ignore-path .eslintignore",
+		"prettier:fix": "prettier --write \"./**/*.{js,cjs,esm,json}\"",
+		"eslint:fix": "eslint \"**/*.{js,cjs,esm,json}\" --fix --ignore-path .eslintignore",
 		"lint": "npm run prettier:fix && npm run eslint:fix"
 	},
 	"repository": {
