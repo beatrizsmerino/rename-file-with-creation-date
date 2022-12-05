@@ -1,3 +1,5 @@
-"use strict";
+import chalk from "chalk";
 
-console.log("Hello world!");
+const warning = chalk.hex("#FFA500");
+
+console.log(warning("Hello world!"));

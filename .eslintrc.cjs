@@ -1,13 +1,15 @@
-"use strict";
-
 module.exports = {
 	root: true,
 	env: {
-		browser: true,
 		node: true
 	},
 	parserOptions: {
-		parser: "@babel/eslint-parser"
+		parser: "@babel/eslint-parser",
+		ecmaFeatures: {
+			jsx: true
+		},
+		ecmaVersion: "latest",
+		sourceType: "module"
 	},
 	extends: [
 		"prettier",
