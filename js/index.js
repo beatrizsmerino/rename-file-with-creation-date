@@ -1,7 +1,7 @@
 import chalk from "chalk";
-import emoji from "node-emoji";
+import nodeEmoji from "node-emoji";
 
 const warning = chalk.hex("#FFA500");
-const rocket = emoji.get("rocket");
+const emojiRocket = nodeEmoji.get("rocket");
 
-console.log(warning("Hello world!") + rocket);
+console.log(warning("Hello world!") + emojiRocket);
