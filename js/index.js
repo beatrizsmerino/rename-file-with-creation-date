@@ -1,5 +1,5 @@
 import {
 	getFolder
-} from "./get-folder.js";
+} from "./exif-viewer.js";
 
 getFolder();

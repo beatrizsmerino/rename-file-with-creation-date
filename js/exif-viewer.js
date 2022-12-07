@@ -11,7 +11,6 @@ const getFileList = async path => {
 	}
 };
 
-
 const getFolder = () => {
 	term.magenta("Enter the path to your folder: ");
 
