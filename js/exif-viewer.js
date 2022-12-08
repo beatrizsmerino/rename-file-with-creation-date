@@ -3,12 +3,9 @@ import terminalKit from "terminal-kit";
 
 const term = terminalKit.terminal;
 
-const getFileList = async path => {
-	const dir = await fs.promises.opendir(path);
-	term.magenta(`\nThere are files inside:`);
-	for await (const dirent of dir) {
-		term.green(`\n${dirent.name}`);
-	}
+const getArrayOfFiles = dirPath => {
+	const files = fs.readdirSync(dirPath);
+	console.log(files);
 };
 
 const getFolder = () => {
@@ -25,7 +22,8 @@ const getFolder = () => {
 					process.exit();
 				} else {
 					term.green("\nYour folder selected is '%s'\n", path);
-					await getFileList(path);
+					term.magenta(`\nThere are files inside:\n`);
+					await getArrayOfFiles(path);
 				}
 			})(input);
 		}
