@@ -39,8 +39,8 @@ const getFolder = () => {
 					process.exit();
 				} else {
 					term.green("\nYour folder selected is '%s'\n", path);
-					term.magenta(`\nThere are files inside:\n`);
 					const files = await getArrayOfFiles(path);
+					term.magenta("\nThere are %s files inside:\n", files.length);
 					term.table(
 						[
 							[
