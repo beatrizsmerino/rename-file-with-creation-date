@@ -1,14 +1,29 @@
 import fs from "fs";
 import terminalKit from "terminal-kit";
+import nodeEmoji from "node-emoji";
 
 const term = terminalKit.terminal;
+const iconFolder = nodeEmoji.get("folder");
+const iconFile = nodeEmoji.get("file");
 
 const isFolder = path => Boolean(fs.lstatSync(path).isDirectory());
 const isFile = path => Boolean(fs.lstatSync(path).isFile());
 
 const getArrayOfFiles = dirPath => {
-	const files = fs.readdirSync(dirPath);
-	console.log(files);
+	const filesNames = fs.readdirSync(dirPath);
+
+	const files = filesNames.map(file => ({
+		icon: isFolder(`${dirPath}/${file}`) ? iconFolder : iconFile,
+		isFolder: isFolder(`${dirPath}/${file}`),
+		isFile: isFile(`${dirPath}/${file}`),
+		path: `${dirPath}/${file}`,
+		folder: `${dirPath}`,
+		file: `${file}`,
+		name: isFile(`${dirPath}/${file}`) ? file.split(".").shift() : "",
+		extension: isFile(`${dirPath}/${file}`) ? file.split(".").pop() : ""
+	}));
+
+	return files;
 };
 
 const getFolder = () => {
@@ -25,7 +40,8 @@ const getFolder = () => {
 				} else {
 					term.green("\nYour folder selected is '%s'\n", path);
 					term.magenta(`\nThere are files inside:\n`);
-					await getArrayOfFiles(path);
+					const files = await getArrayOfFiles(path);
+					console.log(files);
 				}
 			})(input);
 		}
