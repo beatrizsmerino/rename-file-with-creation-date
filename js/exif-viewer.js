@@ -3,6 +3,9 @@ import terminalKit from "terminal-kit";
 
 const term = terminalKit.terminal;
 
+const isFolder = path => Boolean(fs.lstatSync(path).isDirectory());
+const isFile = path => Boolean(fs.lstatSync(path).isFile());
+
 const getArrayOfFiles = dirPath => {
 	const files = fs.readdirSync(dirPath);
 	console.log(files);
@@ -17,8 +20,7 @@ const getFolder = () => {
 			process.exit();
 		} else {
 			(async path => {
-				const isFolder = fs.lstatSync(path).isDirectory();
-				if (!isFolder) {
+				if (!isFolder(path)) {
 					process.exit();
 				} else {
 					term.green("\nYour folder selected is '%s'\n", path);
