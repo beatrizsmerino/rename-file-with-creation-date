@@ -3,8 +3,8 @@ import terminalKit from "terminal-kit";
 import nodeEmoji from "node-emoji";
 
 const term = terminalKit.terminal;
-const iconFolder = nodeEmoji.get("folder");
-const iconFile = nodeEmoji.get("file");
+const iconFolder = nodeEmoji.get("open_file_folder");
+const iconFile = nodeEmoji.get("scroll");
 
 const isFolder = path => Boolean(fs.lstatSync(path).isDirectory());
 const isFile = path => Boolean(fs.lstatSync(path).isFile());
