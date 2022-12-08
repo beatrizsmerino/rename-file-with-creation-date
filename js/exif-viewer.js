@@ -41,7 +41,39 @@ const getFolder = () => {
 					term.green("\nYour folder selected is '%s'\n", path);
 					term.magenta(`\nThere are files inside:\n`);
 					const files = await getArrayOfFiles(path);
-					console.log(files);
+					term.table(
+						[
+							[
+								"#",
+								"icon",
+								"file"
+							],
+							...files.map((item, index) => {
+								if (
+									item.hasOwnProperty("icon") &&
+									item.hasOwnProperty("file")
+								) {
+									return [
+										index + 1,
+										item.icon,
+										item.file
+									];
+								}
+							})
+						],
+						{
+							hasBorder: true,
+							borderAttr: {
+								color: "green"
+							},
+							firstRowTextAttr: {
+								bgColor: "green"
+							},
+							borderChars: "lightRounded",
+							width: 60,
+							fit: true
+						}
+					);
 				}
 			})(input);
 		}
