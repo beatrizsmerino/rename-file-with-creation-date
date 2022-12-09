@@ -41,6 +41,7 @@
 	},
 	"dependencies": {
 		"chalk": "^5.1.2",
+		"exif": "^0.6.0",
 		"node-emoji": "^1.11.0",
 		"terminal-kit": "^3.0.0"
 	},
