@@ -1,10 +1,9 @@
 import fs from "fs";
 import terminalKit from "terminal-kit";
 import nodeEmoji from "node-emoji";
-import exif from "exif";
+import exifTool from "exiftool";
 
 const term = terminalKit.terminal;
-const ExifImage = exif.ExifImage;
 const iconFolder = nodeEmoji.get("open_file_folder");
 const iconFile = nodeEmoji.get("scroll");
 
@@ -12,22 +11,19 @@ const isFolder = path => Boolean(fs.lstatSync(path).isDirectory());
 const isFile = path => Boolean(fs.lstatSync(path).isFile());
 
 const getExifImage = file => {
-	try {
-		new ExifImage(
-			{
-				image: file
-			},
-			(error, exifData) => {
-				if (error) {
-					console.log(`Error: ${error.message}`);
+	fs.readFile(file, function(err, data) {
+		if (err) {
+			throw err;
+		} else {
+			exifTool.metadata(data, function(err, metadata) {
+				if (err) {
+					throw err;
 				} else {
-					return exifData;
+					console.log(metadata);
 				}
-			}
-		);
-	} catch (error) {
-		console.log(`Error: ${error.message}`);
-	}
+			});
+		}
+	});
 };
 
 const getArrayOfFiles = dirPath => {
