@@ -5,6 +5,10 @@
 	"type": "module",
 	"exports": "./index.js",
 	"scripts": {
+		"install:global": "node ./js/preinstall-global-dependencies.cjs",
+		"install:clean": "rm -rf node_modules package-lock.json",
+		"preinstall": "npm run install:global && npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions",
+		"postinstall": "npm run lint",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"main:js": "node js/index.js",
 		"prettier:fix": "prettier --write \"./**/*.{js,cjs,esm,json}\"",
@@ -44,6 +48,9 @@
 		"exiftool": "^0.0.3",
 		"node-emoji": "^1.11.0",
 		"terminal-kit": "^3.0.0"
+	},
+	"globalDependencies": {
+		"exiftool": "^0.0.3"
 	},
 	"engines": {
 		"node": ">=14.16"
