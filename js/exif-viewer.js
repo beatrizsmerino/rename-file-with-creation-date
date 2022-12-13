@@ -21,7 +21,9 @@ const getExifImage = file => {
 				} else {
 					const findKeyDate = Object.fromEntries(Object.entries(metadata).filter(([
 						key
-					]) => key.includes("Date")));
+					]) => key.includes("mediaCreateDate") ||
+								key.includes("creationDate")));
+
 					console.log(findKeyDate);
 				}
 			});
