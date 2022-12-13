@@ -52,6 +52,45 @@ const getArrayOfFiles = dirPath => {
 	return files;
 };
 
+const createTableOfFiles = files => {
+	term.table(
+		[
+			[
+				"#",
+				"icon",
+				"file",
+				"exif"
+			],
+			...files.map((item, index) => {
+				if (
+					item.hasOwnProperty("icon") &&
+					item.hasOwnProperty("file") &&
+					item.hasOwnProperty("exif")
+				) {
+					return [
+						index + 1,
+						item.icon,
+						item.file,
+						item.exif
+					];
+				}
+			})
+		],
+		{
+			hasBorder: true,
+			borderAttr: {
+				color: "green"
+			},
+			firstRowTextAttr: {
+				bgColor: "green"
+			},
+			borderChars: "lightRounded",
+			width: 60,
+			fit: true
+		}
+	);
+};
+
 const getFolder = () => {
 	term.magenta("Enter the path to your folder: ");
 
@@ -67,42 +106,7 @@ const getFolder = () => {
 					term.green("\nYour folder selected is '%s'\n", path);
 					const files = await getArrayOfFiles(path);
 					term.magenta("\nThere are %s files inside:\n", files.length);
-					term.table(
-						[
-							[
-								"#",
-								"icon",
-								"file",
-								"exif"
-							],
-							...files.map((item, index) => {
-								if (
-									item.hasOwnProperty("icon") &&
-									item.hasOwnProperty("file") &&
-									item.hasOwnProperty("exif")
-								) {
-									return [
-										index + 1,
-										item.icon,
-										item.file,
-										item.exif
-									];
-								}
-							})
-						],
-						{
-							hasBorder: true,
-							borderAttr: {
-								color: "green"
-							},
-							firstRowTextAttr: {
-								bgColor: "green"
-							},
-							borderChars: "lightRounded",
-							width: 60,
-							fit: true
-						}
-					);
+					createTableOfFiles(files);
 				}
 			})(input);
 		}
