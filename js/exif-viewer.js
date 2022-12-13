@@ -1,4 +1,7 @@
 import fs from "fs";
+import {
+	promisify
+} from "util";
 import terminalKit from "terminal-kit";
 import nodeEmoji from "node-emoji";
 import exifTool from "exiftool";
@@ -7,46 +10,41 @@ const term = terminalKit.terminal;
 const iconFolder = nodeEmoji.get("open_file_folder");
 const iconFile = nodeEmoji.get("scroll");
 
+const promiseReadDir = promisify(fs.readdir);
+const promiseReadFile = promisify(fs.readFile);
+const promiseMetadata = promisify(exifTool.metadata);
+
 const isFolder = path => Boolean(fs.lstatSync(path).isDirectory());
 const isFile = path => Boolean(fs.lstatSync(path).isFile());
 
-const getExifImage = file => {
-	fs.readFile(file, function(err, data) {
-		if (err) {
-			throw err;
-		} else {
-			exifTool.metadata(data, function(err, metadata) {
-				if (err) {
-					throw err;
-				} else {
-					const findKeyDate = Object.fromEntries(Object.entries(metadata).filter(([
-						key
-					]) => key.includes("fileTypeExtension") ||
-								key.includes("mediaCreateDate") ||
-								key.includes("creationDate") ||
-								key.includes("createDate") ||
-								key.includes("modifyDate")));
+const getExifImage = async file => {
+	const data = await promiseReadFile(file);
+	const metadata = await promiseMetadata(data);
 
-					console.log(findKeyDate);
-				}
-			});
-		}
-	});
+	return metadata;
 };
 
-const getArrayOfFiles = dirPath => {
-	const filesNames = fs.readdirSync(dirPath);
+const getArrayOfFiles = async dirPath => {
+	const filesNames = await promiseReadDir(dirPath);
 
-	const files = filesNames.map(file => ({
-		icon: isFolder(`${dirPath}/${file}`) ? iconFolder : iconFile,
-		isFolder: isFolder(`${dirPath}/${file}`),
-		isFile: isFile(`${dirPath}/${file}`),
-		path: `${dirPath}/${file}`,
-		folder: `${dirPath}`,
-		file: `${file}`,
-		name: isFile(`${dirPath}/${file}`) ? file.split(".").shift() : "",
-		extension: isFile(`${dirPath}/${file}`) ? file.split(".").pop() : "",
-		exif: getExifImage(`${dirPath}/${file}`)
+	const files = Promise.all(filesNames.map(async file => {
+		const metadata = await getExifImage(`${dirPath}/${file}`);
+
+		return {
+			icon: isFolder(`${dirPath}/${file}`) ? iconFolder : iconFile,
+			isFolder: isFolder(`${dirPath}/${file}`),
+			isFile: isFile(`${dirPath}/${file}`),
+			path: `${dirPath}/${file}`,
+			folder: `${dirPath}`,
+			file: `${file}`,
+			name: isFile(`${dirPath}/${file}`)
+				? file.split(".").shift()
+				: "",
+			extension: isFile(`${dirPath}/${file}`)
+				? file.split(".").pop()
+				: "",
+			exif: metadata
+		};
 	}));
 
 	return files;
