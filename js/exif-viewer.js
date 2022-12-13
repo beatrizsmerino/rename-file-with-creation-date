@@ -56,12 +56,12 @@ const createTableOfFiles = files => {
 			[
 				"#",
 				"icon",
-				"file",
-				"exif fileTypeExtension",
-				"exif mediaCreateDate",
-				"exif creationDate",
-				"exif createDate",
-				"exif modifyDate"
+				"name",
+				"extension",
+				"media create date",
+				"creation date",
+				"create date",
+				"modify date"
 			],
 			...files.map((item, index) => {
 				if (
