@@ -91,7 +91,7 @@ const createTableOfFiles = files => {
 				bgColor: "green"
 			},
 			borderChars: "lightRounded",
-			width: 60,
+			width: 80,
 			fit: true
 		}
 	);
