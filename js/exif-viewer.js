@@ -19,7 +19,10 @@ const getExifImage = file => {
 				if (err) {
 					throw err;
 				} else {
-					console.log(metadata);
+					const findKeyDate = Object.fromEntries(Object.entries(metadata).filter(([
+						key
+					]) => key.includes("Date")));
+					console.log(findKeyDate);
 				}
 			});
 		}
