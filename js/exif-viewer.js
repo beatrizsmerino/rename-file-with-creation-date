@@ -40,9 +40,6 @@ const getArrayOfFiles = async dirPath => {
 			name: isFile(`${dirPath}/${file}`)
 				? file.split(".").shift()
 				: "",
-			extension: isFile(`${dirPath}/${file}`)
-				? file.split(".").pop()
-				: "",
 			exif: metadata
 		};
 	}));
@@ -73,7 +70,7 @@ const createTableOfFiles = files => {
 						index + 1,
 						item.icon,
 						item.name,
-						item.exif.fileTypeExtension,
+						item.exif.fileType,
 						item.exif.mediaCreateDate,
 						item.exif.creationDate,
 						item.exif.createDate,
