@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import {
 	promisify
 } from "util";
@@ -38,7 +39,7 @@ const getArrayOfFiles = async dirPath => {
 			folder: `${dirPath}`,
 			file: `${file}`,
 			name: isFile(`${dirPath}/${file}`)
-				? file.split(".").shift()
+				? path.parse(file).name
 				: "",
 			exif: metadata
 		};
