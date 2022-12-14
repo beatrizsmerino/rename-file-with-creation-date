@@ -10,6 +10,7 @@ import exifTool from "exiftool";
 const term = terminalKit.terminal;
 const iconFolder = nodeEmoji.get("open_file_folder");
 const iconFile = nodeEmoji.get("scroll");
+const iconError = nodeEmoji.get("x");
 
 const promiseReadDir = promisify(fs.readdir);
 const promiseReadFile = promisify(fs.readFile);
@@ -71,11 +72,11 @@ const createTableOfFiles = files => {
 						index + 1,
 						item.icon,
 						item.name,
-						item.exif.fileType,
-						item.exif.mediaCreateDate,
-						item.exif.creationDate,
-						item.exif.createDate,
-						item.exif.modifyDate
+						item.exif.fileType || iconError,
+						item.exif.mediaCreateDate || iconError,
+						item.exif.creationDate || iconError,
+						item.exif.createDate || iconError,
+						item.exif.modifyDate || iconError
 					];
 				}
 			})
