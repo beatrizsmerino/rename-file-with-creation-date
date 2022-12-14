@@ -66,13 +66,13 @@ const createTableOfFiles = files => {
 			...files.map((item, index) => {
 				if (
 					item.hasOwnProperty("icon") &&
-					item.hasOwnProperty("file") &&
+					item.hasOwnProperty("name") &&
 					item.hasOwnProperty("exif")
 				) {
 					return [
 						index + 1,
 						item.icon,
-						item.file,
+						item.name,
 						item.exif.fileTypeExtension,
 						item.exif.mediaCreateDate,
 						item.exif.creationDate,
